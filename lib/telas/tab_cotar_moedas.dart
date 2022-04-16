@@ -99,7 +99,6 @@ class _CotarAppState extends State<CotarMoedas> {
                       margin: const EdgeInsets.all(12),
                       padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                          //color: Colors.red,
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
                               color: Colors.amber.shade100, width: 3)),
