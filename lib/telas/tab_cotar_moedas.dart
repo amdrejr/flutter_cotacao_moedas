@@ -79,7 +79,7 @@ class _CotarAppState extends State<CotarMoedas> {
             case ConnectionState.none:
             case ConnectionState.waiting:
               return const Center(
-                  child: CircularProgressIndicator(color: Colors.red));
+                  child: CircularProgressIndicator(color: AppCollor.primary));
             default:
               if (snapshot.hasError) {
                 return const Center(
@@ -92,40 +92,42 @@ class _CotarAppState extends State<CotarMoedas> {
                 dolar = snapshot.data!["results"]["currencies"]["USD"]["buy"];
                 euro = snapshot.data!["results"]["currencies"]["EUR"]["buy"];
 
-                return SingleChildScrollView(
-                  padding: const EdgeInsets.all(12),
-                  child: Container(
-                    margin: const EdgeInsets.all(12),
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                        //color: Colors.red,
-                        borderRadius: BorderRadius.circular(8),
-                        border:
-                            Border.all(color: Colors.amber.shade100, width: 3)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        buildTextField(
-                          label: 'Real',
-                          prefix: 'R\$ ',
-                          controller: realController,
-                          func: _realChanged,
-                        ),
-                        const Divider(color: Colors.transparent),
-                        buildTextField(
-                          label: 'Dolar',
-                          prefix: 'US\$ ',
-                          controller: dolarController,
-                          func: _dolarChanged,
-                        ),
-                        const Divider(color: Colors.transparent),
-                        buildTextField(
-                          label: 'Euro',
-                          prefix: '¢ ',
-                          controller: euroController,
-                          func: _euroChanged,
-                        ),
-                      ],
+                return Center(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(12),
+                    child: Container(
+                      margin: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(24),
+                      decoration: BoxDecoration(
+                          //color: Colors.red,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                              color: Colors.amber.shade100, width: 3)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          buildTextField(
+                            label: 'Real',
+                            prefix: 'R\$ ',
+                            controller: realController,
+                            func: _realChanged,
+                          ),
+                          const Divider(color: Colors.transparent),
+                          buildTextField(
+                            label: 'Dolar',
+                            prefix: 'US\$ ',
+                            controller: dolarController,
+                            func: _dolarChanged,
+                          ),
+                          const Divider(color: Colors.transparent),
+                          buildTextField(
+                            label: 'Euro',
+                            prefix: '¢ ',
+                            controller: euroController,
+                            func: _euroChanged,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );

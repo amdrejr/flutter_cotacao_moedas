@@ -1,3 +1,4 @@
+import 'package:coin_analytic/app_collors.dart';
 import 'package:coin_analytic/telas/tab_cotar_criptos.dart';
 import 'package:coin_analytic/telas/tab_cotar_moedas.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +19,17 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
 
   final List<BottomNavigationBarItem> itens = const [
     BottomNavigationBarItem(
-        label: 'Moedas', icon: FaIcon(FontAwesomeIcons.moneyBill1Wave)),
+        tooltip: 'Converter Moedas',
+        label: 'Moedas',
+        icon: FaIcon(
+          FontAwesomeIcons.moneyBill1Wave,
+        )),
     BottomNavigationBarItem(
-        label: 'Criptos', icon: FaIcon(FontAwesomeIcons.bitcoin)),
+        tooltip: 'Converter Criptomoedas',
+        label: 'Criptos',
+        icon: FaIcon(
+          FontAwesomeIcons.bitcoin,
+        )),
   ];
 
   int _indiceAtual = 0;
@@ -35,10 +44,14 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Teste'),
+        centerTitle: true,
+        backgroundColor: AppCollor.appBarColor,
+        title: const Text('Conversor de Moedas'),
       ),
       body: _telas[_indiceAtual],
       bottomNavigationBar: BottomNavigationBar(
+        fixedColor: AppCollor.primary,
+        backgroundColor: AppCollor.appBarColor,
         currentIndex: _indiceAtual,
         items: itens,
         onTap: onTabTapped,

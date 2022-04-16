@@ -21,13 +21,15 @@ void main() async {
   //print(await getData());
   runApp(MaterialApp(
     theme: ThemeData(
+        brightness: Brightness.dark,
+        primaryColor: Colors.red,
         hintColor: Colors.amber[600],
         inputDecorationTheme: InputDecorationTheme(
-          enabledBorder: OutlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: AppCollor.primary)),
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: AppCollor.secondary)),
-          hintStyle: TextStyle(color: AppCollor.primary),
+          hintStyle: const TextStyle(color: AppCollor.primary),
           labelStyle: TextStyle(color: AppCollor.secondary),
         )),
     home: TelaPrincipal(),
