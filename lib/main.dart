@@ -1,6 +1,6 @@
+import 'package:coin_analytic/app_collors.dart';
+import 'package:coin_analytic/telas/tela_principal.dart';
 import 'package:flutter/material.dart';
-
-import 'cotar_moedas.dart';
 
 // Request de Clima Tempo
 //final Uri request = Uri.http(
@@ -20,16 +20,16 @@ final Uri requestUri = Uri.http(
 void main() async {
   //print(await getData());
   runApp(MaterialApp(
-    home: const CotarApp(),
     theme: ThemeData(
-        hintColor: Colors.amber,
-        primaryColor: Colors.white,
-        inputDecorationTheme: const InputDecorationTheme(
-          enabledBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-          focusedBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.amber)),
-          hintStyle: TextStyle(color: Colors.amber),
+        hintColor: Colors.amber[600],
+        inputDecorationTheme: InputDecorationTheme(
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: AppCollor.primary)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: AppCollor.secondary)),
+          hintStyle: TextStyle(color: AppCollor.primary),
+          labelStyle: TextStyle(color: AppCollor.secondary),
         )),
+    home: TelaPrincipal(),
   ));
 }

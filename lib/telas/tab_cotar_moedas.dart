@@ -1,3 +1,5 @@
+import 'package:coin_analytic/app_collors.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
@@ -6,14 +8,14 @@ import 'package:flutter/material.dart';
 
 const request = "https://api.hgbrasil.com/finance?format=json&key=e1fe1b46";
 
-class CotarApp extends StatefulWidget {
-  const CotarApp({Key? key}) : super(key: key);
+class CotarMoedas extends StatefulWidget {
+  const CotarMoedas({Key? key}) : super(key: key);
 
   @override
-  State<CotarApp> createState() => _CotarAppState();
+  State<CotarMoedas> createState() => _CotarAppState();
 }
 
-class _CotarAppState extends State<CotarApp> {
+class _CotarAppState extends State<CotarMoedas> {
   double? dolar;
   double? euro;
   double? real;
@@ -70,12 +72,6 @@ class _CotarAppState extends State<CotarApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text('Conversor de Moedas'),
-        centerTitle: true,
-        backgroundColor: Colors.amber,
-      ),
       body: FutureBuilder<Map?>(
         future: getData(),
         builder: (context, snapshot) {
@@ -88,7 +84,7 @@ class _CotarAppState extends State<CotarApp> {
               if (snapshot.hasError) {
                 return const Center(
                   child: Text(
-                    'Erro ao carregar dados D:',
+                    'Erro ao carregar os dados D:',
                     style: TextStyle(color: Colors.yellow),
                   ),
                 );
@@ -98,36 +94,39 @@ class _CotarAppState extends State<CotarApp> {
 
                 return SingleChildScrollView(
                   padding: const EdgeInsets.all(12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      const Icon(
-                        Icons.monetization_on,
-                        size: 150,
-                        color: Colors.amber,
-                      ),
-                      const Divider(),
-                      buildTextField(
-                        label: 'Real',
-                        prefix: 'R\$ ',
-                        controller: realController,
-                        func: _realChanged,
-                      ),
-                      const Divider(),
-                      buildTextField(
-                        label: 'Dolar',
-                        prefix: 'US\$ ',
-                        controller: dolarController,
-                        func: _dolarChanged,
-                      ),
-                      const Divider(),
-                      buildTextField(
-                        label: 'Euro',
-                        prefix: '¢ ',
-                        controller: euroController,
-                        func: _euroChanged,
-                      ),
-                    ],
+                  child: Container(
+                    margin: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(24),
+                    decoration: BoxDecoration(
+                        //color: Colors.red,
+                        borderRadius: BorderRadius.circular(8),
+                        border:
+                            Border.all(color: Colors.amber.shade100, width: 3)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        buildTextField(
+                          label: 'Real',
+                          prefix: 'R\$ ',
+                          controller: realController,
+                          func: _realChanged,
+                        ),
+                        const Divider(color: Colors.transparent),
+                        buildTextField(
+                          label: 'Dolar',
+                          prefix: 'US\$ ',
+                          controller: dolarController,
+                          func: _dolarChanged,
+                        ),
+                        const Divider(color: Colors.transparent),
+                        buildTextField(
+                          label: 'Euro',
+                          prefix: '¢ ',
+                          controller: euroController,
+                          func: _euroChanged,
+                        ),
+                      ],
+                    ),
                   ),
                 );
               }
@@ -159,6 +158,6 @@ Widget buildTextField({
       labelText: label,
       prefixText: prefix,
     ),
-    style: const TextStyle(fontSize: 25, color: Colors.yellow),
+    style: const TextStyle(fontSize: 25, color: Colors.black),
   );
 }
