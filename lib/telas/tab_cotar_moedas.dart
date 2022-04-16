@@ -1,4 +1,5 @@
 import 'package:coin_analytic/app_collors.dart';
+import 'package:coin_analytic/styles/styles_decorations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -141,24 +142,4 @@ class _CotarAppState extends State<CotarMoedas> {
 Future<Map> getData() async {
   http.Response response = await http.get(Uri.parse(request));
   return json.decode(response.body);
-}
-
-Widget buildTextField({
-  required String label,
-  required String prefix,
-  required TextEditingController controller,
-  Function(String)? func,
-}) {
-  return TextField(
-    controller: controller,
-    onChanged: (String value) {
-      func!(value);
-    },
-    keyboardType: TextInputType.number,
-    decoration: InputDecoration(
-      labelText: label,
-      prefixText: prefix,
-    ),
-    style: TextStyle(fontSize: 25, color: AppCollor.secondary),
-  );
 }
