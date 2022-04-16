@@ -160,6 +160,6 @@ Widget buildTextField({
       labelText: label,
       prefixText: prefix,
     ),
-    style: const TextStyle(fontSize: 25, color: Colors.black),
+    style: TextStyle(fontSize: 25, color: AppCollor.secondary),
   );
 }
