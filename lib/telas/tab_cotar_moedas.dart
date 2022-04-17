@@ -82,10 +82,10 @@ class _CotarAppState extends State<CotarMoedas> {
                   child: CircularProgressIndicator(color: AppCollor.primary));
             default:
               if (snapshot.hasError) {
-                return const Center(
+                return Center(
                   child: Text(
                     'Erro ao carregar os dados D:',
-                    style: TextStyle(color: Colors.yellow),
+                    style: TextStyle(color: AppCollor.secondary),
                   ),
                 );
               } else {
